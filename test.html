@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>index.html</title>
+      <style>
+      div{
+        border:1px solid black;
+        width:400;
+        height:200;
+        overflow: scroll;
+      }
+        body{
+          background : #dddddd;
+        }
+        #canvas {
+          margin : 10px;
+          padding : 10px;
+          background : #ffffff;
+          border : thin inset #aaaaaa;
+        }
+      </style>
+    </head>
+        <body onload="Melon();">
+          <script type="application/javascript">
+          function Melon(){
+            function musicPlaying(){
+              var canvas = document.getElementById('canvas');
+                  context = canvas.getContext('2d');
+              context.strokeStyle = 'rgba(204, 204, 204, 1)';
+              context.lineWidth = 2;
+              context.beginPath();
+              context.moveTo(0, 710);
+              context.lineTo(canvas.width, 710);
+              context.stroke();
+              //-----------------------------------------------
+              context.strokeStyle = 'black';
+              context.lineWidth = 1;
+              i = 0;
+              while(i < 2){
+                context.beginPath();
+                context.moveTo(10, 730 + i * 7);
+                context.lineTo(40, 730 + i * 7);
+                context.stroke();
+                i += 1;
+              }
+              context.beginPath();
+              context.moveTo(10, 744);
+              context.lineTo(25, 744);
+              context.stroke();
+
+              context.beginPath();
+              context.moveTo(30, 740);
+              context.lineTo(30, 748);
+              context.lineTo(40, 744);
+              context.lineTo(30, 740);
+              context.fill();
+              //-----------------------------------------------------
+              context.font = 'bold 15px malgum gothic';
+              context.fillStyle = 'black';
+              context.fillText('잠이 오질 않네요', 60, 735);
+
+              context.font = '11px malgum gothic';
+              context.fillStyle = 'gray';
+              context.fillText('장범준', 60, 752);
+              //--------------------------------------------------
+              context.fillStyle = 'black';
+              context.beginPath();
+              context.moveTo(340,735);
+              context.lineTo(320,720);
+              context.lineTo(320,750);
+              context.lineTo(340,735);
+              context.fill();//big
+
+              context.beginPath();
+              context.moveTo(370,735);
+              context.lineTo(360,728);
+              context.lineTo(360,742);
+              context.lineTo(370,735);
+              context.fill();//right
+
+              context.beginPath();
+              context.moveTo(285,735);
+              context.lineTo(295,728);
+              context.lineTo(295,742);
+              context.lineTo(285,735);
+              context.fill();//left
+
+              context.strokeStyle = 'black';
+              context.lineWidth = 1;
+              context.beginPath();
+              context.moveTo(285, 742);
+              context.lineTo(285, 728);
+              context.stroke();
+
+              context.beginPath();
+              context.moveTo(370, 742);
+              context.lineTo(370, 728);
+              context.stroke();// lines stuck on tri
+
+              context.strokeStyle = 'rgba(204, 204, 204, 1)';
+              context.lineWidth = 1;
+              context.beginPath();
+              context.moveTo(0, 760);
+              context.lineTo(canvas.width, 760);
+              context.stroke();
+            }
+            function systemUI(color){
+              var canvas = document.getElementById('canvas');
+                  context = canvas.getContext('2d');
+              context.font = '14px bold malgun gothic';
+              context.fillStyle = color;
+              context.strokeStyle = color;
+              context.fillText('14:12',20, 15);
+              //current time
+              context.lineWidth = 3;
+              var i = 0;
+              while(i < 5){
+                context.beginPath();
+                context.moveTo(300 + i * 5, 15);
+                context.lineTo(300 + i * 5, 15 - i * 3);
+                context.stroke();
+                i++;
+              }//sigmal bar
+              context.beginPath();
+              context.arc(340, 15, 10, Math.PI * 5/4, Math.PI * 7/4, false);
+              context.stroke();
+
+              context.beginPath();
+              context.arc(340, 15, 6, Math.PI * 5/4, Math.PI * 7/4, false);
+              context.stroke();
+
+              context.beginPath();
+              context.arc(340, 15, 2, Math.PI * 5/4, Math.PI * 7/4, false);
+              context.stroke();
+              //wifi
+              context.lineWidth = 0.5;
+              //context.strokeStyle=color;
+              context.strokeRect(360, 4.5, 20, 12.5);
+              context.fillStyle = 'rgba(51,204,51,1)';
+              context.fillRect(362, 6, 10, 10);
+              context.fillStyle = color;
+              context.fillRect(380, 9, 2, 4);
+              //battery icon
+            }
+            function inAppButtons(){
+              var canvas = document.getElementById('canvas'),
+                  context = canvas.getContext('2d');
+
+              context.strokeStyle='black';
+              context.lineWidth=1;
+
+              context.beginPath()
+              context.moveTo(15, 780);
+              context.lineTo(30, 770);
+              context.lineTo(45, 780);
+              context.lineTo(45, 795);
+              context.lineTo(35, 795);
+              context.lineTo(35, 790);
+              context.arc(30, 790, 5, 0, Math.PI, true);
+              context.lineTo(25, 795);
+              context.lineTo(15, 795);
+              context.lineTo(15, 780);
+              context.stroke();
+              //home icon
+
+              context.beginPath();
+              context.moveTo(110, 770);
+              context.lineTo(130, 770);
+              context.lineTo(130, 795);
+              context.lineTo(110, 795);
+              context.lineTo(110, 770);
+              context.stroke();
+
+              context.beginPath();
+              context.arc(120, 783, 4, 0, Math.PI*2, false);
+              context.stroke();
+
+              context.beginPath();
+              context.moveTo(133, 770);
+              context.lineTo(135, 772);
+              context.lineTo(135, 793);
+              context.lineTo(133, 795);
+              context.stroke();
+              //second icon
+
+              context.beginPath();
+              context.arc(200, 780, 12, Math.PI / 4, Math.PI * 3/4, true);
+              context.stroke();
+
+              context.beginPath();
+              context.arc(200, 780, 7.5, Math.PI / 4, Math.PI * 3/4, true);
+              context.stroke();
+
+              context.beginPath();
+              context.arc(200, 780, 3, Math.PI/2 , Math.PI * 5/2, false);
+              context.lineTo(200, 792);
+              context.stroke();
+              //center icon
+
+              context.beginPath();
+              context.arc(280, 780, 10, Math.PI/4, Math.PI * 9/4, false);
+              context.lineTo(293, 793);
+              context.stroke();
+              //search icon
+
+              context.beginPath();
+              context.moveTo(350, 770);
+              context.lineTo(375, 770);
+              context.lineTo(375, 780);
+              context.lineTo(350, 780);
+              context.lineTo(350, 770);
+              context.stroke();
+
+              context.beginPath();
+              context.moveTo(350, 783);
+              context.lineTo(375, 783);
+              context.lineTo(375, 793);
+              context.lineTo(350, 793);
+              context.lineTo(350, 783);
+              context.stroke();
+
+              context.beginPath();
+              context.moveTo(360, 775);
+              context.lineTo(365, 775);
+
+              context.moveTo(360, 788);
+              context.lineTo(365, 788);
+              context.stroke();
+              //drawer icon
+            }
+            function mainPage(){
+                var canvas = document.getElementById('canvas'),
+                    context = canvas.getContext('2d');
+                function melonIcon(){
+                  context.beginPath();
+                  context.strokeStyle = 'rgba(51, 225, 51,1)';
+                  context.lineWidth = 8;
+                  context.arc(25, 60, 13, 0, Math.PI * 2);
+                  context.stroke();
+
+                  context.beginPath();
+                  context.strokeStyle = 'rgba(51,225,51,1)';
+                  context.lineWidth = 7;
+                  context.arc(46, 40, 4, 0, Math.PI * 2);
+                  context.stroke();     //좌상단 멜론 아이
+                }
+                function membershipBox(){
+                  context.lineJoin = 'round';
+                  context.lineWidth = 1;
+                  context.font = '16px malgun gothic';
+                  context.fillText('이용권', 275, 70);
+
+                  context.strokeStyle = 'black';
+                  context.strokeRect(270, 50, 60, 27);
+                }
+                function threeLines(){
+                  var step_y = 10,
+                      i = 0;
+                  context.strokeStyle = 'black';
+                  context.lineWidth = 2;
+                  while(i < 3){
+                    context.beginPath();
+                    context.moveTo(360, 52 + i * step_y);
+                    context.lineTo(390, 52 + i * step_y)
+                    context.stroke();
+                    i += 1;
+                  }
+                }
+
+                function toLikeMusic(){
+                  context.font="25px malgun gothic";
+                  context.fillText('김보섭님이 좋아할 음악', 10, 130);
+                  context.strokeStyle = 'black';
+                }
+
+                function firstLine(){
+                  context.font="bold 11px malgun gothic";
+                  context.fillStyle = 'rgba(51, 204, 51,1)'
+                  context.fillText('내 취향 음악 선곡하기', 10, 160);
+                  context.fillText('요즘 트렌드가 궁금하다면', 135, 160);
+                  context.fillText('김보섭님의 데일리 믹스', 280, 160);
+                  //-------------------------------------------------------
+                  context.fillStyle = 'rgba(65, 237, 168, 1)';
+                  context.fillRect(10, 180, 110, 110);
+
+                  context.beginPath();
+                  context.fillStyle = 'rgba(0, 0, 0 ,1)';
+                  context.arc(65, 235, 43, 0, Math.PI * 2);
+                  context.fill();
+                  let j = 5;
+                  while(j > 0){
+                    context.beginPath();
+                    context.strokeStyle = 'rgba(255, 255, 255, 1)';
+                    context.lineWidth = 0.7;
+                    context.arc(65, 235, 43 - 6 * j, 0, Math.PI * 2);
+                    context.stroke();
+                    j -= 1;
+                  }
+                  context.beginPath();
+                  context.fillStyle = 'rgba(102, 52, 255,1)';
+                  context.arc(65, 235, 8, 0, Math.PI * 2);
+                  context.fill();
+
+                  context.beginPath();
+                  context.fillStyle = 'rgba(255, 255, 255,1)';
+                  context.arc(65, 235, 2, 0, Math.PI * 2);
+                  context.fill();
+
+                  context.font='bold 15px malgum gothic';
+                  context.fillStyle = 'rgba(255, 255, 255, 1)';
+                  context.fillText('셀프 디제잉', 26, 210);//여기!!
+                  //--------------------------------------------------
+                  context.fillStyle = 'rgba(255, 255, 204, 1)';
+                  context.fillRect(145, 180, 110, 110);
+
+                  context.font='bold 15px malgum gothic';
+                  context.fillStyle = 'rgba(51, 204, 51,1)';
+                  context.fillText('멜론차트', 160, 210);
+
+                  var green_mint = context.createLinearGradient(160, 0, 230, 0);
+                  green_mint.addColorStop(0, 'rgba(0, 255, 204, 1)');
+                  green_mint.addColorStop(1, 'rgba(51, 204, 51, 1)');
+                  context.fillStyle = green_mint;
+                  context.beginPath();
+                  context.moveTo(160, 250);
+                  context.lineTo(165, 240);
+                  context.lineTo(175, 240);
+                  context.lineTo(175, 270);
+                  context.lineTo(165, 270);
+                  context.lineTo(165, 250);
+                  context.lineTo(160, 250);
+                  context.fill();
+
+                  context.beginPath();
+                  context.arc(190, 255, 15, 0, Math.PI * 2, false);
+                  context.fill();
+
+                  context.beginPath();
+                  context.arc(215, 255, 15, 0, Math.PI * 2, false);
+                  context.fill();
+
+                context.fillStyle = 'rgba(255, 255, 204, 1)';
+                  context.beginPath();
+                  context.arc(190, 255, 7, 0, Math.PI * 2, false);
+                  context.fill();
+
+                  context.beginPath();
+                  context.arc(215, 255, 7, 0, Math.PI * 2, false);
+                  context.fill();
+                  //-------------------------------------------------------
+                  var blue_green = context.createLinearGradient(280, 180, 390, 290);
+                  blue_green.addColorStop(0, 'rgba(0, 255, 123, 1)');
+                  blue_green.addColorStop(1, 'rgba(0, 204, 255, 1)');
+                  context.fillStyle = blue_green;
+                  context.fillRect(280, 180, 110, 110);
+
+                  context.font='bold 15px malgum gothic';
+                  context.fillStyle = 'rgba(255, 255, 255,1)';
+                  context.fillText('My Daily', 295, 210);
+                  context.fillText('Mix', 295, 230);
+                  context.font='10px malgum gothic';
+                  context.fillText('넬 (Nell), 장범준...', 295, 280);
+                }
+                function secondLine(){
+                  context.font='bold 18px malgum gothic';
+                  context.fillStyle = 'rgba(0, 0, 0, 1)';
+                  context.fillText('최신음악', 10, 330);
+
+                  context.font='15px malgum gothic';
+                  context.fillStyle = 'rgba(51, 204, 51, 1)';
+                  context.fillText('전체', 95, 330);
+
+                  context.font='15px malgum gothic';
+                  context.fillStyle = 'rgba(0, 0, 0, 1)';
+                  context.fillText('국내', 140, 330);
+
+                  context.font='15px malgum gothic';
+                  context.fillStyle = 'rgba(0, 0, 0, 1)';
+                  context.fillText('해외', 185, 330);
+
+                  context.font='14px malgum gothic';
+                  context.fillStyle = 'rgba(153, 153, 153, 1)';
+                  context.fillText('전체보기', 330, 330);
+
+                  context.strokeStyle = 'rgba(153, 153, 153, 1)';
+                  context.lineWidth = 1;
+                  let i = 0;
+                  while(i < 2){
+                    context.beginPath();
+                    context.moveTo(133 + i * 45, 317);
+                    context.lineTo(133 + i * 45, 332);
+                    context.stroke();
+                    i += 1;
+                  }
+                  var music = [];
+                  function AlbumList(src, aName_1, aName_2, artist, i, j){
+                      music[i * 3 + j] = new Image();
+                      music[i * 3 + j].src = src;
+                      music[i * 3 + j].onload = function(e) {
+                        context.drawImage(music[i * 3 + j], 10 + 135 * j, 350 + i * 180, 110, 110);
+                      };
+                      if(aName_2 != ''){
+                        context.font='bold 15px malgum gothic';
+                        context.fillStyle = 'black';
+                        context.fillText(aName_1, 10 + 135 * j, 480 + i * 180);
+                        context.fillText(aName_2, 10 + 135 * j, 500 + i * 180);
+
+                        context.font='14px malgum gothic';
+                        context.fillStyle = 'gray';
+                        context.fillText(artist, 10 + 135 * j, 520 + i * 180);
+                      }
+                      else{
+                        context.font='bold 15px malgum gothic';
+                        context.fillStyle = 'black';
+                        context.fillText(aName_1, 10 + 135 * j, 480 + i * 180);
+
+                        context.font='14px malgum gothic';
+                        context.fillStyle = 'gray';
+                        context.fillText(artist, 10 + 135 * j, 500 + i * 180);
+                      }
+                  }
+                  AlbumList('../2017203020/AlbumCover/Celebrity.jpg', 'Celebrity', '', '아이유', 0, 0);
+                  AlbumList('../2017203020/AlbumCover/asura_balbalta.jpg', 'AsuRa BalBalTa', '', '리쌍', 0, 1);
+                  AlbumList('../2017203020/AlbumCover/Seperation_Anxiety.jpg', 'Seperation', 'Anxiety', '넬 (NELL)', 0, 2);
+                  AlbumList('../2017203020/AlbumCover/RedDiaryPage1.jpg', 'Red Diary', 'Page.1', '볼빨간사춘기', 1, 0);
+                  AlbumList('../2017203020/AlbumCover/Newtons_apple.jpg', 'Newton\'s Apple', '', '넬(NELL)', 1, 1);
+                  AlbumList('../2017203020/AlbumCover/JangBeomJune_3rd.jpg', '장범준 3집', '', '장범준', 1, 2);
+                }
+                systemUI('black');
+                melonIcon();
+                membershipBox();
+                threeLines();
+                toLikeMusic();
+                firstLine();
+                secondLine();
+                musicPlaying();
+                inAppButtons();
+                context.canvas.onmousedown = function (e) {
+                  context.clearRect(0, 0, canvas.width, canvas.height);
+                  currentMusic();
+                };
+              }
+              function currentMusic(){
+                var canvas = document.getElementById('canvas'),
+                    context = canvas.getContext('2d');
+                var black_brown = context.createLinearGradient(0, 0, 0, 400);
+                  black_brown.addColorStop(0, 'rgba(23, 11, 0, 1)');
+                  black_brown.addColorStop(1, 'rgba(51, 0, 0, 1)');
+                context.fillStyle = black_brown;
+                context.fillRect(0, 0, 400, 450);
+                function titleNArtist(){
+                  context.font = '10px malgum gothic';
+                  context.fillStyle = 'gray';
+                  context.fillText('AAC', 100, 65);
+                  context.fillText('128K', 100, 75);
+
+                  context.font = '18px bold malgum gothic';
+                  context.fillStyle = 'white';
+                  context.fillText('잠이 오질 않네요', 130, 72);
+
+                  context.font = '13px malgum gothic';
+                  context.fillStyle = 'gray';
+                  context.fillText('장범준', 175, 100);
+                }
+                function threeDotsNCurve(){
+                  context.strokeStyle = 'white';
+                  context.lineJoin = 'round';
+                  context.lineWidth = 1.5;
+                  context.beginPath();
+                  context.moveTo(350, 55);
+                  context.lineTo(365, 70);
+                  context.lineTo(380, 55);
+                  context.stroke();
+
+                  i = 0;
+                  while(i < 3){
+                    context.beginPath();
+                    context.fillStyle = 'rgba(255, 255, 255 ,1)';
+                    context.arc(365, 90 + i * 5, 1.5, 0, Math.PI * 2);
+                    context.fill();
+                    i += 1;
+                  }
+                }
+                function albumCover(){
+                  var cantSleep = new Image();
+                  cantSleep.src = '../2017203020/AlbumCover/cant_sleep.jpg';
+                  cantSleep.onload = function(e) {
+                    context.drawImage(cantSleep, 35, 175, 330, 330);
+                  };
+                }
+                function heartNNum(){
+                  context.fillStyle = 'red';
+                  context.beginPath();
+                  context.arc(40, 530, 7, Math.PI, Math.PI * 2, false);
+                  context.arc(54, 530, 7, Math.PI, Math.PI * 2, false);
+                  context.lineTo(47, 543);
+                  context.lineTo(33, 530);
+                  context.fill();//heart
+
+                  context.fillStyle = 'black';
+                  context.font = 'bold 15px malgun gothic';
+                  context.fillText('126,463', 70, 540);
+                }
+                function rightButtons(){
+                  context.strokeStyle = 'rgba(204, 204, 204, 1)';
+                  context.lineJoin = 'round';
+                  context.strokeRect(270, 515, 55, 30);
+
+                  context.font = '14px malgun gothic';
+                  context.fillText('유사곡', 278, 535);
+                  //similar musics
+                  var insta_grad = context.createLinearGradient(345, 545, 375, 515);
+                  insta_grad.addColorStop(0, 'yellow');
+                  insta_grad.addColorStop(0.3, 'red')
+                  insta_grad.addColorStop(0.6, 'purple');
+                  insta_grad.addColorStop(1, 'blue');
+
+                  context.strokeStyle = insta_grad;
+                  context.lineJoin = 'round';
+                  context.lineWidth = 1.5;
+                  context.beginPath();
+                  context.arc(352, 522, 7, Math.PI, Math.PI * 3/2, false);
+                  context.lineTo(368, 515);
+                  context.arc(368, 522, 7, Math.PI * 3/2, 0, false);
+                  context.lineTo(375, 538);
+                  context.arc(368, 538, 7, 0, Math.PI * 1/2, false);
+                  context.lineTo(352, 545);
+                  context.arc(352, 538, 7, Math.PI * 1/2, Math.PI, false);
+                  context.lineTo(345, 522);
+                  context.stroke();
+
+                  context.beginPath();
+                  context.arc(360, 530, 8, 0, Math.PI * 2, false);
+                  context.stroke();
+
+                  context.beginPath();
+                  context.fillStyle = 'rgba(103, 0, 204, 1)';
+                  context.arc(369, 520, 2, 0, Math.PI * 2, false);
+                  context.fill(); // instagram button
+                }
+                function lyrics(){
+                  context.font = '16px malgum gothic';
+                  context.fillStyle = 'green';
+                  context.fillText('당신은 날 설레게 만들어', 110, 590);
+
+                  context.fillStyle = 'black';
+                  context.fillText('조용한 내 마음 자꾸만 춤추게 해', 80, 620);
+                }
+                function progressBar(){
+                  context.strokeStyle = 'rgba(204, 204, 204, 1)';
+                  context.lineWidth = 3;
+                  context.beginPath();
+                  context.moveTo(60, 700);
+                  context.lineTo(340, 700);
+                  context.stroke();
+                  //------------------------------------------------------------
+                  var endPoints = [{x:350, y:700}, {x:370, y:715}],
+                      controlPoints = [{x:370, y:700}, {x:350, y:715}];
+
+                  context.lineWidth = 1;
+                  context.strokeStyle = 'rgba(102, 102, 102, 1)';
+                  context.beginPath();
+                  context.moveTo(endPoints[0].x, endPoints[0].y);
+                  context.bezierCurveTo(controlPoints[0].x, controlPoints[0].y,
+                                        controlPoints[1].x, controlPoints[1].y,
+                                        endPoints[1].x, endPoints[1].y);
+                  context.stroke();
+
+                  context.beginPath();
+                  context.moveTo(controlPoints[0].x, controlPoints[0].y);
+                  context.bezierCurveTo(endPoints[0].x, endPoints[0].y,
+                                        endPoints[1].x, endPoints[1].y,
+                                        controlPoints[1].x, controlPoints[1].y);
+                  context.stroke();
+
+                  context.beginPath();
+                  context.moveTo(367, 713);
+                  context.lineTo(370, 715);
+                  context.lineTo(367, 717);
+                  context.stroke();
+
+                  context.beginPath();
+                  context.moveTo(367, 698);
+                  context.lineTo(370, 700);
+                  context.lineTo(367, 702);
+                  context.stroke();       //shuffle button
+                  //----------------------------------------------
+                  context.beginPath()
+                  context.moveTo(15, 712);
+                  context.lineTo(15, 700);
+                  context.lineTo(40, 700);
+                  context.stroke();
+
+                  context.beginPath();
+                  context.moveTo(37, 697);
+                  context.lineTo(40, 700);
+                  context.lineTo(37, 703);
+                  context.stroke();
+
+                  context.beginPath()
+                  context.moveTo(45, 700);
+                  context.lineTo(45, 712);
+                  context.lineTo(20, 712);
+                  context.stroke();
+
+                  context.beginPath();
+                  context.moveTo(23, 709);
+                  context.lineTo(20, 712);
+                  context.lineTo(23, 715);
+                  context.stroke();       //repeat button
+                  //-----------------------------------------------------
+                  context.fillStyle = 'green';
+                  context.font = '12px bold malgun gothic';
+                  context.fillText('0:00', 60, 720);
+
+                  context.fillStyle = 'gray';
+                  context.fillText('4:36', 315, 720);
+                }
+                function bottomLine(){
+                  context.strokeStyle = 'black';
+                  context.lineWidth = 2;
+                  i = 0;
+                  while(i < 2){
+                    context.beginPath();
+                    context.moveTo(15, 750 + i * 7);
+                    context.lineTo(40, 750 + i * 7);
+                    context.stroke();
+                    i += 1;
+                  }
+                  context.beginPath();
+                  context.moveTo(15, 764);
+                  context.lineTo(25, 764);
+                  context.stroke();
+
+                  context.beginPath();
+                  context.fillStyle = 'black';
+                  context.moveTo(30, 760);
+                  context.lineTo(30, 768);
+                  context.lineTo(40, 764);
+                  context.lineTo(30, 760);
+                  context.fill();
+                  //-----------------------------------------
+                  context.beginPath();
+                  context.moveTo(185,740);
+                  context.lineTo(185,770);
+                  context.lineTo(215,755);
+                  context.lineTo(185,740);
+                  context.fill();//big tri
+
+                  context.beginPath();
+                  context.moveTo(260,745);
+                  context.lineTo(260,765);
+                  context.lineTo(280,755);
+                  context.lineTo(260,745);
+                  context.fill();//right tri
+
+                  context.beginPath();
+                  context.moveTo(110,755);
+                  context.lineTo(130,765);
+                  context.lineTo(130,745);
+                  context.lineTo(110,755);
+                  context.fill();//left tri
+
+                  context.strokeStyle = 'black';
+                  context.lineWidth = 3;
+                  context.beginPath();
+                  context.moveTo(280, 745);
+                  context.lineTo(280, 765);
+                  context.stroke();
+
+                  context.beginPath();
+                  context.moveTo(110, 745);
+                  context.lineTo(110, 765);
+                  context.stroke();// lines stuck on tri
+                  //----------------------------------------
+                  context.lineWidth = 2;
+                  context.strokeStyle = 'black';
+                  context.beginPath();
+                  context.lineJoin = 'round';
+                  context.moveTo(360, 745);
+                  context.lineTo(350, 750);
+                  context.lineTo(345, 750);
+                  context.lineTo(345, 760);
+                  context.lineTo(350, 760);
+                  context.lineTo(360, 765);
+                  context.stroke();
+
+                  context.fillStyle = 'black';
+                  context.font= '14px bold malgun gothic';
+                  context.fillText('EQ', 357, 760);
+                  // Equalizer
+                }
+                systemUI('white');
+                titleNArtist();
+                threeDotsNCurve();
+                albumCover();
+                heartNNum();
+                rightButtons();
+                lyrics();
+                progressBar();
+                bottomLine();
+                context.canvas.onmousedown = function (e) {
+                  context.clearRect(0, 0, canvas.width, canvas.height);
+                  myOwnMusicDrawer();
+                };
+                /*canvas.addEventListener("click", function(e) {
+                  alert("xpos : " + e.layerX + ", ypos : " + e.layerY);
+                });*/
+              }
+            function myOwnMusicDrawer(){
+              var canvas = document.getElementById('canvas'),
+                  context = canvas.getContext('2d');
+              function text(){
+                context.font = 'bold 23px malgun gothic';
+                context.fillStyle='black';
+                context.fillText('나만의 음악서랍', 15, 80);
+
+                context.strokeStyle = 'black';
+                context.beginPath();
+                context.arc(320, 72, 7, Math.PI, 0,false);
+                context.lineTo(329, 79);
+                context.lineTo(331, 82);
+                context.lineTo(309, 82);
+                context.lineTo(311, 79);
+                context.lineTo(313 ,72);
+                context.stroke();
+                context.beginPath();
+                context.arc(320, 82, 3, 0, Math.PI, false);
+                context.stroke();         //bell
+
+                var profileColor = context.createLinearGradient(360, 55, 390, 85);
+                profileColor.addColorStop(0, 'rgba(204, 153, 255, 1)');
+                //profileColor.addColorStop(1, 'rgba(153, 204, 255, 1)');
+                profileColor.addColorStop(1, 'rgba(0, 255, 204, 1)');
+                context.fillStyle = profileColor;
+                context.beginPath();
+                context.arc(375,70,15,0, Math.PI*2, false);
+                context.fill();
+
+                context.fillStyle='black';
+                context.font = 'bold 15px malgun gothic';
+                context.fillText('최근 들은', 15, 130);
+                context.fillText('자주 들은', 165, 130);
+                context.font = '13px malgun gothic';
+                context.fillStyle = 'gray';
+                context.fillText('전체보기', 330, 132);
+              }
+              function albumPackage(){
+                var albums = [];
+                function square(src, i, j ,k){
+                  albums[i * 4 + j * 2 + k] = new Image();
+                  albums[i * 4 + j * 2 + k].src = src;
+                  albums[i * 4 + j * 2 + k].onload = function(e){
+                    context.drawImage(albums[i * 4 + j * 2 + k], 15 + i* 150 + k * 60, 140 + j * 60, 60, 60);
+                  };
+                }
+                square('../2017203020/AlbumCover/Jonny.jpg', 0, 0, 0);
+                square('../2017203020/AlbumCover/rainy_day.jpg', 0, 1, 0);
+                square('../2017203020/AlbumCover/SMTM9.jpg', 0, 0, 1);
+                square('../2017203020/AlbumCover/puberty_1.jpg', 0, 1, 1);
+
+                square('../2017203020/AlbumCover/ocean_of_light.jpg', 1, 0, 0);
+                square('../2017203020/AlbumCover/yanghwa.jpg', 1, 1, 0);
+                square('../2017203020/AlbumCover/even_stars_close_their_eyes.jpg', 1, 0, 1);
+                square('../2017203020/AlbumCover/hexagonal.jpg', 1, 1, 1);
+
+                context.font = '12px malgun gothic';
+                context.fillText('99곡', 15, 300);
+                context.fillText('99곡', 165, 300);
+                context.font = 'bold 14px malgun gothic';
+                context.fillStyle='black';
+                context.fillText('Roller Coaster 외',15,283);
+                context.fillText('폭풍속으로 외',165,283);
+              }
+              function lineButtons(){
+                context.font='14px malgun gothic';
+                context.strokeStyle='black';
+                context.lineWidth = 1.5;
+                context.beginPath();
+                context.arc(20, 350, 5, Math.PI, 0, false);
+                context.arc(30, 350, 5, Math.PI, 0, false);
+                context.lineTo(25, 360);
+                context.lineTo(15, 350);
+                context.stroke();
+                context.fillText('좋아요한', 55,357);
+                //-------------------------------------------
+                context.beginPath();
+                context.moveTo(15, 405);
+                context.lineTo(30, 405);
+                context.stroke();
+
+                context.beginPath();
+                context.moveTo(15, 410);
+                context.lineTo(30, 410);
+                context.stroke();
+
+                context.beginPath();
+                context.moveTo(15, 415);
+                context.lineTo(22, 415);
+                context.stroke();
+
+                context.beginPath();
+                context.arc(28,419,4,0,Math.PI*2,false);
+                context.stroke();
+
+                context.beginPath()
+                context.moveTo(33,419);
+                context.lineTo(33,404);
+                context.lineTo(38,410);
+                context.lineTo(38,415);
+                context.stroke();
+
+                context.fillText('내 플레이리스트',55, 420);
+                //--------------------------------------------
+                context.beginPath();
+                context.arc(25,475,10,0,Math.PI*2,false);
+                context.arc(25,475,4,0,Math.PI*2,false);
+                context.stroke();
+                context.fillText('많이들은',55, 480);
+                //---------------------------------------------
+                context.beginPath();
+                context.moveTo(15, 535);
+                context.lineTo(22, 535);
+                context.lineTo(25, 528);//first angle
+                context.lineTo(28, 535);
+                context.lineTo(35, 535);//second angle
+                context.lineTo(30, 541);
+                context.lineTo(33, 548);//third angle
+                context.lineTo(25, 543);
+                context.lineTo(17, 548);//forth angle
+                context.lineTo(20, 541);
+                context.lineTo(15, 535);//back to first point
+                context.stroke();
+
+                context.fillText('팬맺은',55, 545);
+                //-----------------------------------------------
+                context.strokeRect(15, 595, 22, 22);
+                context.fillText('뮤직DNA', 55, 610);
+                i = 0;
+                while(i < 3){
+                  context.beginPath();
+                  context.moveTo(22 + i * 4, 612);
+                  context.lineTo(22 + i * 4, 608 - i*3);
+                  context.stroke();
+                  i++;
+                }
+                //------------------------------------------------
+                context.beginPath();
+                context.moveTo(23, 673);
+                context.lineTo(15, 673);
+                context.lineTo(15, 658);
+                context.lineTo(23, 658);
+                context.lineTo(24, 661);
+                context.lineTo(36, 661);
+                context.lineTo(36, 668);
+                context.stroke();
+
+                context.beginPath();
+                context.moveTo(27, 671);
+                context.lineTo(31, 674);
+                context.lineTo(35, 671);
+                context.stroke();
+
+                context.beginPath();
+                context.moveTo(31, 666);
+                context.lineTo(31, 674);
+                context.stroke();
+                context.fillText('다운로드한',55, 670);
+              }
+              function rightNumsNArrow(){
+                function drawArrow(gap){
+                  context.strokeStyle = 'gray';
+                  context.beginPath();
+                  context.moveTo(380, 340 + gap);
+                  context.lineTo(387, 347 + gap);
+                  context.lineTo(380, 354 + gap);
+                  context.stroke();
+                }
+                drawArrow(0);
+                drawArrow(65);
+                drawArrow(130);
+                drawArrow(195);
+                drawArrow(260);
+                drawArrow(315);
+                context.font='12px malgun gothic';
+                context.fillStyle='gray';
+                context.fillText('374', 350, 350);
+                context.fillText('19', 355, 415);
+                context.fillText('0', 360, 480);
+                context.fillText('26', 355, 545);
+              }
+              systemUI('black');
+              text();
+              albumPackage();
+              lineButtons();
+              rightNumsNArrow();
+              musicPlaying();
+              inAppButtons();
+              context.canvas.onmousedown = function (e) {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                searchPage();
+              };
+            }
+            function searchPage(){
+              var canvas = document.getElementById('canvas'),
+                  context = canvas.getContext('2d');
+              function topLine(){
+                context.lineWidth = 1;
+                context.font = 'bold 23px malgun gothic';
+                context.strokeStyle='black';
+                context.fillStyle='black';
+                context.fillText('나에게 맞춘 탐색', 15, 80);
+
+                context.beginPath();
+                context.arc(320, 65, 6, Math.PI, 0, false);
+                context.lineTo(326, 73);
+                context.arc(320, 73, 6, 0, Math.PI, false);
+                context.lineTo(314,65);
+                context.stroke();
+
+                context.beginPath();
+                context.moveTo(326,69);
+                context.lineTo(314,69);
+                context.stroke();
+
+                context.beginPath();
+                context.moveTo(320,79);
+                context.lineTo(320,83);
+                context.lineTo(314,83);
+                context.lineTo(326,83);
+                context.stroke();
+                //mic icon
+                context.beginPath();
+                context.arc(375, 70, 13, Math.PI* 3/2, Math.PI, false);
+                context.stroke();
+
+                context.beginPath();
+                context.arc(375, 70, 13, Math.PI + Math.PI * 1/18, Math.PI + Math.PI * 2/18, false);
+                context.stroke();
+
+                context.beginPath();
+                context.arc(375, 70, 13,Math.PI + Math.PI * 3/18, Math.PI + Math.PI * 4/18, false);
+                context.stroke();
+
+                context.beginPath();
+                context.arc(375, 70, 13,Math.PI + Math.PI * 5/18, Math.PI + Math.PI * 6/18, false);
+                context.stroke();
+
+                context.beginPath();
+                context.arc(375, 70, 13,Math.PI + Math.PI * 7/18, Math.PI + Math.PI * 8/18, false);
+                context.stroke();
+
+                context.beginPath();
+                context.arc(374, 72, 2, 0, Math.PI * 2, false);
+                context.fill();
+
+                context.beginPath();
+                context.moveTo(376, 72);
+                context.lineTo(376, 64);
+                context.lineTo(380, 67);
+                context.lineTo(380, 70)
+                context.stroke();
+                //note icon
+
+              }
+              function searchBar(){
+                  context.font='14px malgun gothic';
+                  context.fillStyle='gray';
+                  context.fillText('검색어를 입력하세요', 15, 150);
+
+                  context.beginPath();
+                  context.strokeStyle='black';
+                  context.arc(370, 140, 8, Math.PI / 4, Math.PI * 9 / 4, false);
+                  context.lineTo(381, 151);
+                  context.stroke();
+                  //search icon
+                  context.beginPath();
+                  context.lineWidth = 2;
+                  context.moveTo(15, 160);
+                  context.lineTo(385, 160);
+                  context.stroke();
+              }
+              function ttt(){
+                context.fillStyle = 'black';
+                context.font = 'bold 15px malgun gothic';
+                context.fillText('인기', 15, 190);
+
+                context.fillStyle='rgba(51,204,51,1)';
+                context.fillText('1', 60, 190);
+
+                context.fillStyle='black';
+                context.font='14px malgun gothic';
+                context.fillText('방탄소년단', 75, 190);
+
+                context.strokeStyle='gray';
+                context.beginPath();
+                context.moveTo(360, 180);
+                context.lineTo(370, 190);
+                context.lineTo(380, 180);
+                context.stroke();
+              }
+              function property(){
+                let vanila = new Image();
+                vanila.src = '../2017203020/AlbumCover/pretend.jpg';
+                vanila.onload=function(e){
+                  context.save();
+                  context.beginPath();
+                  context.arc(170,250,18, 0, Math.PI*2, false);
+                  context.closePath();
+                  context.clip();
+                  context.drawImage(vanila, 152, 232,35,35);
+                  context.restore();
+                }
+                let bts=new Image();
+                bts.src='../2017203020/AlbumCover/BTS.jpg';
+                bts.onload=function(e){
+                  context.save();
+                  context.beginPath();
+                  context.arc(120,300,18, 0, Math.PI*2, false);
+                  context.closePath();
+                  context.clip();
+                  context.drawImage(bts, 102, 282,35,35);
+
+                  context.restore();
+                }
+              }
+              function Border(xpos,ypos,length){
+                let box={};
+                box.xpos=xpos;
+                box.ypos=ypos;
+                box.length=length;
+                box.draw=function(){
+                  context.beginPath();
+                  context.arc(this.xpos, this.ypos, 20, Math.PI/2, Math.PI * 3/ 2, false);
+                  context.lineTo(this.xpos+this.length, this.ypos-20);
+                  context.arc(this.xpos+this.length, this.ypos, 20, Math.PI * 3/ 2, Math.PI/2, false);
+                  context.lineTo(this.xpos, this.ypos+20);
+                  context.stroke();
+                }
+                return box;
+              }
+              function theme(){
+                context.strokeStyle='rgba(204,204,204,1)';
+                const b1= new Border(100, 250 ,20),
+                b2= new Border(170,250,130),
+
+                b3=new Border(50 , 300 ,20),
+                b4=new Border(120 , 300 ,100),
+                b5=new Border(270 , 300 ,40),
+
+                b6=new Border(80 , 350 ,40),
+                b7=new Border(170 , 350 ,40),
+                b8=new Border(260, 350 ,40),
+
+                b9=new Border(60, 400, 40),
+                b10=new Border(250, 400, 20);
+                b11=new Border(320, 400, 10)
+                b1.draw();b2.draw();
+                b3.draw();b4.draw();b5.draw();
+                b6.draw();b7.draw();b8.draw();
+                b9.draw();b10.draw();b11.draw();
+
+                context.font='14px malgun gothic';
+                context.fillText('인디', 96, 255);
+                context.fillText('바닐라 어쿠스틱', 200, 255);
+
+                context.fillText('힙한', 46, 305);
+                context.fillText('방탄소년단', 155, 305);
+                context.fillText('아이돌', 270, 305);
+
+                context.fillText('노동요', 80, 355);
+                context.fillText('산뜻한', 170, 355);
+                context.fillText('모던락', 260, 355);
+
+                context.fillText('로파이', 60, 405);
+                context.fillText('새벽', 245, 405);
+                context.fillText('봄', 318, 405);
+
+                context.fillStyle = 'rgba(0, 215, 0, 1)';
+                context.beginPath();
+                context.arc(150, 400, 20, Math.PI/2, Math.PI * 3/ 2, false);
+                context.lineTo(200, 380);
+                context.arc(200, 400, 20, Math.PI * 3/ 2, Math.PI/2, false);
+                context.lineTo(150, 420);
+                context.fill();
+                context.fillStyle='white';
+                context.fillText('방금그곡', 148, 405);
+                //-----------------------------------------------------------
+                context.strokeStyle='gray';
+                context.beginPath();
+                context.arc(160, 455, 5, Math.PI/4, Math.PI*7/4, false);
+                context.lineTo(160, 455);
+                context.lineTo(163.5, 451.5);
+                context.lineTo(161.5, 447.5);
+                context.stroke();
+                context.strokeStyle='rgba(204,204,204,1)';
+                context.beginPath();
+                context.arc(160, 455, 10, 0, Math.PI * 2, false);
+                context.stroke();
+                context.fillStyle='gray';
+                context.fillText('새로보기', 180, 460);
+                context.beginPath();
+                context.moveTo(0, 480);
+                context.lineTo(canvas.width, 480);
+                context.stroke();
+              }
+              function shortCut(){
+                context.fillStyle='black';
+                context.font='bold 15px malgun gothic';
+                context.fillText('바로가기', 170, 510);
+                const bb1=new Border(40,550,130),
+                bb2=new Border(225, 550, 130),
+
+                bb3=new Border(40, 600, 130),
+                bb4=new Border(225, 600, 130),
+
+                bb5=new Border(40, 650, 130),
+                bb6=new Border(225, 650, 130);
+
+                bb1.draw();bb2.draw();
+                bb3.draw();bb4.draw();
+                bb5.draw();bb6.draw();
+
+                context.font='14px malgun gothic';
+                context.fillText('많이찾는', 82, 555);
+                context.fillText('멜론DJ', 265, 555);
+                context.fillText('국내힙합', 82, 605);
+                context.fillText('OST', 273, 605);
+                context.fillText('발라드', 85, 655);
+                context.fillText('인디', 275, 655);
+              }
+              systemUI('black');
+              searchBar();
+              topLine();
+              ttt();
+              theme();
+              shortCut();
+              property();
+              musicPlaying();
+              inAppButtons();
+              context.canvas.onmousedown = function (e) {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                playingListPage();
+              };
+            }
+            function playingListPage(){
+              var canvas = document.getElementById('canvas'),
+                  context = canvas.getContext('2d');
+              context.fillStyle='black';
+              context.fillRect(0,0,400,800);
+              function txt(){
+                context.fillStyle='white';
+                context.font='18px malgun gothic';
+                context.fillText('재생목록', 160, 70);
+
+                context.strokeStyle='rgba(255,255,255,1)';
+                context.lineWidth=1;
+                context.beginPath();
+                context.arc(320, 65, 5, 0, Math.PI * 2, false);
+                context.arc(320, 65, 10, 0, Math.PI * 2, false);
+                context.stroke();
+
+                context.beginPath();
+                context.moveTo(365, 60);
+                context.lineTo(375, 70);
+                context.lineTo(385, 60);
+                context.stroke();
+              }
+              function fourTexts(){
+                context.font='bold 14px malgun gothic';
+                context.fillStyle='green';
+                context.strokeStyle='green';
+                context.beginPath();
+                context.arc(65, 95, 7, Math.PI/2, Math.PI*3/2, false);
+                context.lineTo(75, 88);
+                context.arc(75, 95, 7, Math.PI*3/2, Math.PI/2, false);
+                context.lineTo(65, 102);
+                context.stroke();
+                context.fillText('곡', 40, 100);
+                context.font='bold 10px malgun gothic';
+                context.fillText('999', 61,99);
+
+                context.font='14px malgun gothic';
+                context.fillStyle='white';
+                context.fillText('플레이리스트', 120, 100);
+                context.fillText('비디오', 250, 100);
+                context.fillText('어학', 340, 100);
+              }
+              function grayButtons(){
+                context.strokeStyle='gray';
+                context.beginPath();
+                context.moveTo(15, 130);
+                context.lineTo(15, 120);
+                context.lineTo(55, 120);
+
+                context.lineTo(52, 123);
+                context.lineTo(55, 120);
+                context.lineTo(52, 117);
+                context.stroke();//upper arrow
+
+                context.beginPath();
+                context.moveTo(55, 130);
+                context.lineTo(55, 140);
+                context.lineTo(15, 140);
+
+                context.lineTo(18, 137);
+                context.lineTo(15, 140);
+                context.lineTo(18, 143);//lower arrow
+                context.stroke();
+                context.font='8px malgun gothic';
+                context.fillStyle='rgba(204,204,204,1)';
+                context.fillText('반복재생', 20, 133);
+                //-------------------------------------
+                context.beginPath();
+                context.arc(80, 130, 7, Math.PI/4, Math.PI*9/4,false);
+                context.lineTo(90,140);
+                context.stroke();//돋보기
+                //-----------------------------------------------
+                i=0;
+                while(i<3){
+                  context.beginPath();
+                  context.moveTo(170, 130+i*5);
+                  context.lineTo(185, 130+i*5);
+                  context.stroke();
+                  i++;
+                }
+                context.fillStyle='gray';
+                while(i > 1){
+                  context.beginPath();
+                  context.arc(175, 160 - i * 10, 2, 0, Math.PI*2);
+                  context.fill();
+                  i--;
+                }
+                context.beginPath();
+                context.arc(180, 135, 2, 0, Math.PI*2);
+                context.fill();
+                context.fillStyle='rgba(204,204,204,1)';
+                context.font='13px malgun gothic';
+                context.fillText('내설정순', 190,140);
+
+                context.beginPath();
+                context.arc(345, 135, 8, Math.PI/2, Math.PI*3/2, false);
+                context.lineTo(360,127);
+                context.arc(360, 135, 8, Math.PI*3/2, Math.PI/2, false);
+                context.lineTo(345,143);
+                context.stroke();
+                context.font='10px malgun gothic'
+                context.fillText('편집', 342, 140);
+              }
+              function bottomButtons(){
+                var curMusicIcon=new Image();
+                curMusicIcon.src='../2017203020/AlbumCover/cant_sleep.jpg';
+                curMusicIcon.onload=function(e){
+                  context.drawImage(curMusicIcon, 15, 730, 40, 40);
+                };
+                context.fillStyle = 'white';
+                context.beginPath();
+                context.moveTo(185,740);
+                context.lineTo(185,770);
+                context.lineTo(215,755);
+                context.lineTo(185,740);
+                context.fill();//big tri
+
+                context.beginPath();
+                context.moveTo(260,745);
+                context.lineTo(260,765);
+                context.lineTo(280,755);
+                context.lineTo(260,745);
+                context.fill();//right tri
+
+                context.beginPath();
+                context.moveTo(110,755);
+                context.lineTo(130,765);
+                context.lineTo(130,745);
+                context.lineTo(110,755);
+                context.fill();//left tri
+
+                context.strokeStyle = 'white';
+                context.lineWidth = 3;
+                context.beginPath();
+                context.moveTo(280, 745);
+                context.lineTo(280, 765);
+                context.stroke();
+
+                context.beginPath();
+                context.moveTo(110, 745);
+                context.lineTo(110, 765);
+                context.stroke();// lines stuck on tri
+                //-----------------------------------------
+                context.lineWidth = 2;
+                context.strokeStyle = 'white';
+                context.beginPath();
+                context.lineJoin = 'round';
+                context.moveTo(360, 745);
+                context.lineTo(350, 750);
+                context.lineTo(345, 750);
+                context.lineTo(345, 760);
+                context.lineTo(350, 760);
+                context.lineTo(360, 765);
+                context.stroke();
+
+                context.fillStyle = 'white';
+                context.font= '14px bold malgun gothic';
+                context.fillText('EQ', 357, 760);
+                // Equalizer
+              }
+              function musicLists(){
+                var musicOnPlayLists=[];
+                function inst(src,title,singer,num){
+                  musicOnPlayLists[num] = new Image();
+                  musicOnPlayLists[num].src=src;
+                  musicOnPlayLists[num].onload=function(e){
+                    context.drawImage(musicOnPlayLists[num], 15, 160 + num * 58, 40,40);
+                  };
+                  context.fillStyle='white';
+                  context.font='15px malgun gothic';
+                  context.fillText(title, 65, 175 + num * 58);
+
+                  context.fillStyle='gray';
+                  context.font='14px malgun gothic';
+                  context.fillText(singer, 65, 197 + num * 58);
+                  i = 0;
+                  while(i < 3){
+                    context.beginPath();
+                    context.arc(370, 170 + i * 5 + num * 58, 1.5, 0, Math.PI * 2, false);
+                    context.fill();
+                    i++;
+                  }
+                }
+                inst('../2017203020/AlbumCover/healing_process.jpg', 'Good Night', '넬 (NELL)', 0);
+                inst('../2017203020/AlbumCover/really_love.jpg', '정말로 사랑한다면', '버스커 버스커', 1);
+                inst('../2017203020/AlbumCover/dynamite.jpg', 'Dynamite', '방탄소년단', 2);
+                inst('../2017203020/AlbumCover/snowman.jpg', '눈사람', '정승환', 3);
+                inst('../2017203020/AlbumCover/invitation.jpg', '폭풍속으로 (Feat. 버벌진트)', '에일리(AILEE)', 4);
+                inst('../2017203020/AlbumCover/instagram.jpg', 'instagram', 'DEAN', 5);
+                inst('../2017203020/AlbumCover/and_july.jpg', 'And July (Feat. DEAN)', '헤이즈 (Heize)', 6);
+                inst('../2017203020/AlbumCover/roller_coaster.jpg', 'Roller Coaster', '청하', 7);
+                inst('../2017203020/AlbumCover/pet.jpg', 'pet', '10cm', 8);
+                inst('../2017203020/AlbumCover/boongboong.jpg', '붕붕 (Feat. 식케이)(Prod. GroovyRoom)', '김하온 (HAON)', 9);
+              }
+              systemUI('white');
+              txt();
+              fourTexts();
+              grayButtons();
+              musicLists();
+              bottomButtons();
+              context.canvas.onmousedown = function (e) {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                mainPage();
+              };
+            }
+            mainPage();
+          }
+          </script>
+        <canvas id="canvas" width="400" height="800"></canvas>
+        <p>화면 아무곳이나 클릭시 다음 화면으로 이동<br>
+           메인화면 -> 현재 재생중인 음악 -> 나만의 음악서랍 -> 검색화면 -> 재생목록 -> 메인화면</p>
+
+      </body>
+</html>
